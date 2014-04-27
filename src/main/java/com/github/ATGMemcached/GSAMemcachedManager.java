@@ -32,10 +32,6 @@ public class GSAMemcachedManager extends GenericService implements GSAExternalCa
         return memcachedClient;
     }
 
-    public MemcachedClient getClient() {
-        return this.client;
-    }
-
     public int getDefaultTimeout() {
         return defaultTimeout;
     }
