@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'distribution'
 
 sourceCompatibility = 1.5
-version = '1.0-SNAPSHOT'
+version = '0.1-SNAPSHOT'
 sourceSets.test.runtimeClasspath += files(sourceSets.main.java.srcDirs)
 
 task wrapper(type: Wrapper) {
