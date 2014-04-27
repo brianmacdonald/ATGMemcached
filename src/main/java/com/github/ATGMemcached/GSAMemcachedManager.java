@@ -15,6 +15,7 @@ import java.util.List;
 public class GSAMemcachedManager extends GenericService implements GSAExternalCacheManager {
     private MemcachedClient client;
     private int defaultTimeout;
+    private String addresses;
 
     @Override
     public GSAExternalCacheAdapter getExternalCacheAdapter(GSARepository gsaRepository, GSAItemDescriptor gsaItemDescriptor) {
@@ -27,20 +28,28 @@ public class GSAMemcachedManager extends GenericService implements GSAExternalCa
             List<InetSocketAddress> addresses = AddrUtil.getAddresses(getAddresses());
             memcachedClient = new MemcachedClient(addresses);
         } catch (IOException e) {
-            e.printStackTrace();
+            vlogError("Could not create MemcachedClient " + e.getMessage());
         }
         return memcachedClient;
+    }
+
+    public String generateNamespacePrefix() {
+        return Long.toString(System.currentTimeMillis());
     }
 
     public int getDefaultTimeout() {
         return defaultTimeout;
     }
 
-    public String getAddresses() {
-        return "";
+    public void setDefaultTimeout(int defaultTimeout){
+        this.defaultTimeout = defaultTimeout;
     }
 
-    public String generateNamespacePrefix() {
-        return Long.toString(System.currentTimeMillis());
+    public String getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(String addresses) {
+        this.addresses = addresses;
     }
 }
