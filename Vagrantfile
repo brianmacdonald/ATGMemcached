@@ -3,6 +3,7 @@ Vagrant.configure("2") do |config|
     config.vm.box_url = 'http://files.vagrantup.com/precise64.box'
     config.ssh.forward_agent = true
     config.vm.network :forwarded_port, guest: 11211, host: 11211, auto_correct: true
+    config.vm.synced_folder "puppet", "/puppet"
     config.vm.provision :puppet do |puppet|
         puppet.manifests_path = "puppet/manifests"
         puppet.manifest_file  = "base.pp"
