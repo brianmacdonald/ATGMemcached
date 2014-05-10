@@ -57,6 +57,7 @@ public class GSAMemcachedAdapter implements GSAExternalCacheAdapter {
 
     @Override
     public List<GSAItemData> putItemData(String s, GSAItemData gsaItemData) {
+        getGsaMemcachedManager().vlogDebug("Putting item for " + s);
         getDataStore().add(createNamespaceForItem(s),
                 getGsaMemcachedManager().getDefaultTimeout(),
                 gsaItemData);
