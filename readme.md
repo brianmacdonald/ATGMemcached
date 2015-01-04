@@ -1,4 +1,4 @@
 ATGMemcached
 ------------
 
-WIP of a Memcached Distributed Cache alternative to Oracle Coherence.
+A Memcached Distributed Cache alternative to Oracle Coherence for the ATG Framework
